@@ -80,6 +80,42 @@
 						<li class="fragment">But can observe the load time of the resource</li>
 					</ul>
 				</section>
+				<section>
+					<h2>Threat Model</h2>
+					<ul>
+						<li>Attacker has a website</li>
+						<li>A victim visits their site and gets their browser cache probed</li>
+						<li>Attacker can attempt to load location-based resources from popular sites to determine the victim's location</li>
+						<li class="fragment">We are assuming the victim as rejected GPS access and is using IP Address masking services (VPN or Tor)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<ul>
+						<li class="fragment"><pre><code>&lt;img src="some-location-specific-resource" /&gt;</code></pre></li>
+						<ul>
+							<li class="fragment">Save the start time and end time and compute the difference after the resource loads</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<ul>
+						<li class="fragment">Cross-Origin Resource Sharing (CORS)</li>
+						<ul>
+							<li class="fragment">Similar to above technique but using CORS</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Techniques Available to Query the Victim's Browser Cache</h2>
+					<ul>
+						<li class="fragment"><pre><code>&lt;img src="some-location-specific-resource" complete="complete"/&gt;</code></pre></li>
+						<ul>
+							<li class="fragment">Check the <i>complete</i> attribute of the image tag immediately after setting it's src property</li>
+						</ul>
+					</ul>
+				</section>
 			</div>
 		</div>
 
