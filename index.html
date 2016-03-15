@@ -221,12 +221,14 @@ page.onload = function ()
 							</ul>
 							<li class="fragment">Attempt to request the image and observe the load time</li>
 							<li class="fragment">Logo's Max Age in cache: 31536000ms ~ 8.76 hours</li>
-							<li class="fragment"><a href="#/10" onclick="locateViaCompleteTag(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Firefox, Safari, IE) Check console (F12)</a></li>
-							<li class="fragment"><a href="#/10" onclick="locateViaLoadTime(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Any Browser) Check console (F12)</a></li>
+							<div class="fragment">
+								<li><a href="#/10" onclick="locateViaCompleteTag(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Firefox, Safari, IE) Check console (F12)</a></li>
+								<li><a href="#/10" onclick="locateViaLoadTime(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Any Browser) Check console (F12)</a></li>
+							</div>
 						</ul>
 					</section>
 					<section>
-						<h2>Locating Country Data</h2>
+						<h2>Locating Country Results</h2>
 						<img width="1792" height="430" data-src="images/country-graph.PNG" alt="Locating Country Graph">
 					</section>
 				</section>
@@ -245,8 +247,18 @@ page.onload = function ()
 						</ul>
 					</section>
 					<section>
-						<h2>Locating City Data</h2>
+						<h2>Locating City Results</h2>
 						<img width="1433" height="245" data-src="images/city-graph.PNG" alt="Locating City Graph">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Locating a Victim's Neighborhood</h2>
+						<ul>
+							<li class="fragment">Google Maps tiles are cached with coordinate information</li>
+							<pre class="fragment"><code data-noescape>google.com/maps/vt/pb=!1m5!1m4!1i15!2i<mark>12627</mark>!3i<mark>23720</mark>!4i128!2m1!1e0!3m3!5e1105!12m1!1e47!4e0</code></pre>
+							
+						</ul>
 					</section>
 				</section>
 			</div>
