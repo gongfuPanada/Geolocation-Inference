@@ -51,6 +51,7 @@
 					</p>
 				</section>
 				<section>
+				<section>
 					<h2>Locating the User</h2>
 					<ul>
 						<li>IP Address</li>
@@ -75,7 +76,7 @@
 				<section>
 					<h2>What's the Big Deal?</h2>
 					<ul>
-						<li class="fragment">Modern browsers tend to cache static resources</li>
+						<li>Modern browsers tend to cache static resources</li>
 						<li class="fragment">Can't query the browser cache</li>
 						<li class="fragment">But can observe the load time of the resource</li>
 					</ul>
@@ -89,6 +90,8 @@
 						<li class="fragment">We are assuming the victim as rejected GPS access and is using IP Address masking services (VPN or Tor)</li>
 					</ul>
 				</section>
+				</section>
+				<section>
 				<section>
 					<h2>Querying the Victim's Browser Cache #1</h2>
 					<ul>
@@ -159,6 +162,7 @@ page.onload = function ()
 }</code></pre>
 					</ul>
 				</section>
+				</section>
 				<section>
 					<h2>Geo-interence Attacks on Mainstream Browsers</h2>
 					<table>
@@ -214,7 +218,7 @@ page.onload = function ()
 					<section>
 						<h2>Locating a Victim's Country</h2>
 						<ul>
-							<li class="fragment">Google has 191 geography-specific domains (currently around 200)</li>
+							<li>Google has 191 geography-specific domains (currently around 200)</li>
 							<li class="fragment">Utilize Google's logo image</li>
 							<ul class="fragment">
 								<li><i>google.com.sg</i></li>
@@ -225,7 +229,7 @@ page.onload = function ()
 					<section>
 						<h2>Experiment</h2>
 						<ul>
-							<li class="fragment">Attempted to request the logo image and observe the load time</li>
+							<li>Attempted to request the logo image and observe the load time</li>
 							<li class="fragment">Utilized the &lt;img&gt; technique</li>
 							<li class="fragment">Queried for the logo 3 times and compared the first query to the other 2</li>
 							<li class="fragment">Logo's Max Age in cache: 31536000ms ~ 8.76 hours</li>
@@ -241,8 +245,8 @@ page.onload = function ()
 					<section>
 						<h2>Live Demo</h2>
 						<ul>
-							<li><a href="#/10" onclick="locateViaCompleteTag(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Firefox, Safari, IE) Check console (F12)</a></li>
-							<li><a href="#/10" onclick="locateViaLoadTime(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Any Browser) Check console (F12)</a></li>
+							<li><a href="#/4/3" onclick="locateViaCompleteTag(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Firefox, Safari, IE) Check console (F12)</a></li>
+							<li><a href="#/4/3" onclick="locateViaLoadTime(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Any Browser) Check console (F12)</a></li>
 						</ul>
 					</section>
 				</section>
@@ -250,7 +254,7 @@ page.onload = function ()
 					<section>
 						<h2>Locating a Victim's City</h2>
 						<ul>
-							<li class="fragment">Craigslist has 712 geography-specific domains (currently around 714)</li>
+							<li>Craigslist has 712 geography-specific domains (currently around 714)</li>
 							<li class="fragment">Utilize the &lt;iframe&gt; method</li>
 							<ul class="fragment">
 								<li><i>https://cleveland.craigslist.org/</i></li>
@@ -261,7 +265,7 @@ page.onload = function ()
 					<section>
 						<h2>Experiment</h2>
 						<ul>
-							<li class="fragment">Attempted to request the local page and compare load times utilizing the &lt;iframe&gt; method</li>
+							<li>Attempted to request the local page and compare load times utilizing the &lt;iframe&gt; method</li>
 							<li class="fragment">Queried each of Craigslist's 712 city-oriented websites 3 times</li>
 							<li class="fragment">The first query was compared to the other 2</li>
 						</ul>
@@ -271,7 +275,7 @@ page.onload = function ()
 						<ul>
 							<img width="1433" height="245" data-src="images/city-graph.PNG" alt="Locating City Graph">
 							<li class="fragment">Cache hits are easily distinguishable from cache misses</li>
-							<li class="fragment"><a href="#/11" onclick="loadTimes = []; locateViaIframe(CRAIGSLIST_DOMAINS_OHIO)">Click for demo (Any Browser) Ohio only, check console (F12)</a></li>
+							<li class="fragment"><a href="#/5/2" onclick="loadTimes = []; locateViaIframe(CRAIGSLIST_DOMAINS_OHIO)">Click for demo (Any Browser) Ohio only, check console (F12)</a></li>
 						</ul>
 					</section>
 				</section>
@@ -279,7 +283,7 @@ page.onload = function ()
 					<section>
 						<h2>Locating a Victim's Neighborhood</h2>
 						<ul>
-							<li class="fragment">Google Maps tiles are cached with coordinate information</li>
+							<li>Google Maps tiles are cached with coordinate information</li>
 							<pre class="fragment"><code data-noescape>google.com/maps/vt/pb=!1m5!1m4!1i15!2i<mark>12627</mark>!3i<mark>23720</mark>!4i128!2m1!1e0!3m3!5e1105!12m1!1e47!4e0</code></pre>
 							<li class="fragment">A specific area will have similar URLs so it is possible to predict the URL for other map tiles</li>
 						</ul>
@@ -287,7 +291,7 @@ page.onload = function ()
 					<section>
 						<h2>Experiment</h2>
 						<ul>
-							<li class="fragment">Utilized the &lt;img&gt; method and analyzed load times</li>
+							<li>Utilized the &lt;img&gt; method and analyzed load times</li>
 							<li class="fragment">Measured image load time of 4,646 map tiles in New York City</li>
 							<li class="fragment">Each tile queried 3 times and the first query was compared to the other 2</li>
 						</ul>
@@ -310,21 +314,21 @@ page.onload = function ()
 					<section>
 						<h2>Experiment</h2>
 						<ul>
-							<li class="fragment">Measure page load times 3 times per site against the top 100 Alexa websites</li>
+							<li>Measure page load times 3 times per site against the top 100 Alexa websites</li>
 							<li class="fragment">The average of the 2nd and 3rd measurements are considered cache hit times</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Results</h2>
 						<ul>
-							<img class="fragment" width="1451" height="265" data-src="images/top-alexa-graph.PNG" alt="Locating Neighborhood Graph">
+							<img width="1451" height="265" data-src="images/top-alexa-graph.PNG" alt="Locating Neighborhood Graph">
 							<li class="fragment">Can reliably measure load time and sniff browser history</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Some Observations</h2>
 						<ul>
-							<li class="fragment">Websites can set X-Frame-Options to SAMEORIGIN or DENY in response headers</li>
+							<li>Websites can set X-Frame-Options to SAMEORIGIN or DENY in response headers</li>
 							<li class="fragment">This would prevent loading sites into frames</li>
 							<li class="fragment">Page load time would equal request load time preventing this attack</li>
 							<li class="fragment">However, location-specific resources can still be targeted individually</li>
@@ -341,7 +345,7 @@ page.onload = function ()
 					<section>
 						<h2>Experiment</h2>
 						<ul>
-							<li class="fragment">Analyzed top 100 Alexa websites and identified location-sensitive sites and their resources</li>
+							<li>Analyzed top 100 Alexa websites and identified location-sensitive sites and their resources</li>
 							<li class="fragment">Excluded 45 domains due to the following:</li>
 							<ul class="fragment">
 								<li>Sites related to specific countries (e.g. google.de)</li>
@@ -358,6 +362,134 @@ page.onload = function ()
 							<li>A user having visited any of those sites would be vulnerable to the geo-inference attacks</li>
 						</ul>
 					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Is this an Effective Attack?</h2>
+						<ul>
+							<li>Does not directly pinpoint geo-locations of users</li>
+							<li class="fragment">Can only verify if a user has been to a given location</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Usage Examples</h2>
+						<ul>
+							<li>Paper author wants to know which of 20 cities a review came from</li>
+							<li>Targeting specific areas</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Problems with Time</h2>
+						<ul>
+							<li>Google Maps has 4,646 map tiles for New York City alone</li>
+							<li>5-10 geo-locations can verified every second</li>
+							<li>Can take up to 8 minutes of time</li>
+							<li class="fragment">Can reduce time by running calls in parallel</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Potential Defenses</h2>
+						<ul>
+							<li>Existing defenses can prevent this type of attack</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What Doesn't Work</h2>
+						<ul>
+							<li>Private browsing</li>
+							<ul>
+								<li>Cache is only cleared once the browser is closed not during its use</li>
+							</ul>
+							<div class="fragment">
+								<li>VPN</li>
+								<ul>
+									<li>Masking an IP Address does nothing about the browser cache</li>
+								</ul>
+							</div>
+							<div class="fragment">
+								<li>Tor</li>
+								<ul>
+									<li>Tor browser disables disk cache by default</li>
+									<li class="fragment">Browser cache is still active in <u>memory</u></li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>What Could Work</h2>
+						<ul>
+							<li>Segregating browser cache between websites</li>
+							<ul>
+								<li>Would work but is expensive in terms of load time</li>
+								<li>50% performance overhead</li>
+							</ul>
+							<div class="fragment">
+								<li>XMLHttpRequest</li>
+								<ul>
+									<li>Browsers can block status notifications if the website denied the request to access it</li>
+									<li>Would prevent the CORS & &lt;iframe&gt; methods but &lt;img&gt; method could still work</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>What Else Could Work?</h2>
+						<ul>
+							<li>Add noise into measurement mechanisms related to browser cache queries</li>
+							<ul>
+								<li>Would need to be carefully engineered to not interfere with browser performance</li>
+							</ul>
+							<div class="fragment">
+								<li>Server-side protection</li>
+								<ul>
+									<li>Websites may switch to non-geo-targeting mode upon request of users</li>
+									<li>Likely will degrade site performance</li>
+									<li class="fragment">Could also periodically randomize URLs of geo-targeting resources</li>
+									<li class="fragment">Could also use cache-invalidating headers in HTTP response on location-based resources</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Even More Solutions</h2>
+						<ul>
+							<li>Server-side protection Part 2</li>
+							<ul>
+								<li class="fragment">Prototype tool collects URLs of cached resources and labels location-sensitive resources</li>
+								<li class="fragment">Can be utilized to identify resources that require the cache-invalidating header</li>
+							</ul>
+							<div class="fragment">
+								<li>Browsers can allow end users to opt out of caching</li>
+								<ul>
+									<li>In solutions aimed for privacy, it should be the default option</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Some Ideas of My Own</h2>
+						<ul>
+							<li>Browser extension</li>
+							<ul>
+								<li>Automatically clear the browser cache on each tab open and close</li>
+								<li>Could make it smarter by only clearing items in cache containing a given URL</li>
+							</ul>
+							<div class="fragment">
+								<li>&lt;img&gt; tags are not treated with the same restrictions as straight web requests from the client</li>
+								<ul>
+									<li>Browsers could treat &lt;img&gt; tags with the same restrictions as CORS requests</li>
+									<li class="fragment">Could break a significant portion of websites with this change (ex: <i>Buzzfeed</i>)</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Some Thoughts</h2>
+					<li>If I can convince a user to visit my site, couldn't I just have malware downloaded to their machine?</li>
+					<li class="fragment">It's slightly misleading when they say they've scanned the top 100 Alexa websites when they left out almost half</li>
 				</section>
 			</div>
 		</div>
