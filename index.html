@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>Geolocation Inference</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Inferring geolocation of a user via browser cache.">
+		<meta name="author" content="Mohammad Doleh">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -41,342 +41,470 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h1>Geolocation Inference</h1>
+					<h3>Inferring user geolocation via browser cache.</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						Based on a paper by Yaoqi Jia, Xinshu Dongy, Zhenkai Liang, and Prateek Saxena.
+					</p>
+					<p>
+						<small>Presented by Mohammad Doleh</small>
 					</p>
 				</section>
-
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
-
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
+					<h2>Locating the User</h2>
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+						<li>IP Address</li>
+						<ul>
+							<li class="fragment">Users can use VPN or Tor for anonymity</li>
+							<li class="fragment">Not accurate for mobile networks</li>
+						</ul>
+						<li>Device GPS Sensors</li>
+						<ul>
+							<li class="fragment">Users can easily decline permission</li>
+						</ul>
 					</ul>
 				</section>
-
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<h2>Some Websites Provide Location-Oriented Pages</h2>
+					<ul>
+						<li>Google.com</li>
+						<li>Craigslist</li>
+						<li>Google Maps</li>
+					</ul>
 				</section>
-
 				<section>
-					<h2>Tabular Tables</h2>
+					<h2>What's the Big Deal?</h2>
+					<ul>
+						<li>Modern browsers tend to cache static resources</li>
+						<li class="fragment">Can't query the browser cache</li>
+						<li class="fragment">But can observe the load time of the resource</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Threat Model</h2>
+					<ul>
+						<li>Attacker has a website</li>
+						<li>A victim visits their site and gets their browser cache probed</li>
+						<li>Attacker can attempt to load location-based resources from popular sites to determine the victim's location</li>
+						<li class="fragment">We are assuming the victim as rejected GPS access and is using IP Address masking services (VPN or Tor)</li>
+					</ul>
+				</section>
+				</section>
+				<section>
+				<section>
+					<h2>Querying the Victim's Browser Cache #1</h2>
+					<ul>
+						<pre><code>&lt;img src="some-location-specific-resource" /&gt;</code></pre>
+						<ul>
+							<li class="fragment">Save the start time and end time and compute the difference after the resource loads</li>
+						</ul>
+						<pre class="fragment"><code>var image = document.createElement(‘img’);
+image.src = url;
+image.setAttribute(‘startTime’, (new Date().getTime()));
+image.onload = function()
+{
+	var endTime = new Date().getTime();
+	var loadTime = endTime - parseInt(this.
+	getAttribute(‘startTime’));
+}</code></pre>
+					</ul>
+				</section>
+				<section>
+					<h2>Querying the Victim's Browser Cache #2</h2>
+					<ul>
+						<li>Cross-Origin Resource Sharing (CORS)</li>
+						<ul>
+							<li class="fragment">Similar to the previous technique but make the request manually in JavaScript</li>
+							<pre class="fragment"><code>var starTime, endTime, loadTime;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onloadstart = function()
+{
+	startTime = (new Date()).getTime();
+}
+xmlhttp.onloadend = function()
+{
+	endTime = (new Date()).getTime();
+	loadTime = endTime - startTime;
+}
+</code></pre>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Querying the Victim's Browser Cache #3</h2>
+					<ul>
+						<pre><code>&lt;img src="some-location-specific-resource" complete="complete"/&gt;</code></pre>
+						<ul>
+							<li class="fragment">Check the <i>complete</i> attribute of the image tag immediately after setting its <i>src</i> property</li>
+						</ul>
+						<pre class="fragment"><code>function cached(url)
+{
+	var image = document.createElement(‘img’);
+	image.src = url;
+	return image.complete || image.width+image.height > 0;
+}</code></pre>
+					</ul>
+				</section>
+				<section>
+					<h2>Querying the Victim's Browser Cache #4</h2>
+					<ul>
+						<li>&lt;iframe&gt;</li>
+						<ul>
+							<li class="fragment">Similar to CORS, measure the start and end time then compute the difference</li>
+						</ul>
+						<pre class="fragment"><code>var page = document.createElement(‘iframe’);
+page.setAttribute(‘startTime’, (new Date()).getTime());
+page.onload = function ()
+{
+  var endTime = (new Date()).getTime();
+  var loadTime = ( endTime - parseInt(this.getAttribute(‘startTime’)));
+}</code></pre>
+					</ul>
+				</section>
+				</section>
+				<section>
+					<h2>Geo-interence Attacks on Mainstream Browsers</h2>
 					<table>
 						<thead>
 							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
+								<th>Browser</th>
+								<th>Image Load Time</th>
+								<th>CORS</th>
+								<th>&lt;img&gt; <i>complete</i></th>
+								<th>&lt;iframe&gt;</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
+								<td>Chrome</td>
+								<td>X</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
 							</tr>
 							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
+								<td>Firefox</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+								<td>X</td>
 							</tr>
 							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
+								<td>Safari</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>Opera</td>
+								<td>X</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+							</tr>
+							<tr>
+								<td>IE</td>
+								<td>X</td>
+								<td>-</td>
+								<td>X</td>
+								<td>X</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
-
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
+					<section>
+						<h2>Locating a Victim's Country</h2>
+						<ul>
+							<li>Google has 191 geography-specific domains (currently around 200)</li>
+							<li class="fragment">Utilize Google's logo image</li>
+							<ul class="fragment">
+								<li><i>google.com.sg</i></li>
+								<li><i>/images/srpr/logo11w.png</i></li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Experiment</h2>
+						<ul>
+							<li>Attempted to request the logo image and observe the load time</li>
+							<li class="fragment">Utilized the &lt;img&gt; technique</li>
+							<li class="fragment">Queried for the logo 3 times and compared the first query to the other 2</li>
+							<li class="fragment">Logo's Max Age in Cache-Control header: 31536000ms ~ 8.76 hours</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<ul>
+							<img width="1792" height="430" data-src="images/country-graph.PNG" alt="Locating Country Graph">
+							<li class="fragment">Cache hits are easily distinguishable from cache misses</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Live Demo</h2>
+						<ul>
+							<li><a href="#/4/3" onclick="locateViaCompleteTag(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Firefox, Safari, IE) Check console (F12)</a></li>
+							<li><a href="#/4/3" onclick="loadTimes = []; locateViaLoadTime(GOOGLE_DOMAIN_LIST, 'images/branding/googlelogo/1x/googlelogo_color_272x92dp.png')">Click for demo (Any Browser) Check console (F12)</a></li>
+						</ul>
+					</section>
 				</section>
-
 				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
+					<section>
+						<h2>Locating a Victim's City</h2>
+						<ul>
+							<li>Craigslist has 712 geography-specific domains (currently around 714)</li>
+							<li class="fragment">Utilize the &lt;iframe&gt; method</li>
+							<ul class="fragment">
+								<li><i>https://cleveland.craigslist.org/</i></li>
+								<li><i>https://toledo.craigslist.org/</i></li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Experiment</h2>
+						<ul>
+							<li>Attempted to request the local page and compare load times utilizing the &lt;iframe&gt; method</li>
+							<li class="fragment">Queried each of Craigslist's 712 city-oriented websites 3 times</li>
+							<li class="fragment">The first query was compared to the other 2</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<ul>
+							<img width="1433" height="245" data-src="images/city-graph.PNG" alt="Locating City Graph">
+							<li class="fragment">Cache hits are easily distinguishable from cache misses</li>
+							<div class="fragment">
+								<li><a href="#/5/2" onclick="loadTimes = []; locateViaIframe(CRAIGSLIST_OHIO_DOMAINS)">Click for iframe demo (Any Browser), check console (F12)</a></li>
+								<ul>
+									<li class="fragment">As of recently, the &lt;iframe&gt; method no longer works with Craigslist due to the use of the X-Frame-Options=SAMEORIGIN response header</li>
+								</ul>
+								<li><a href="#/5/2" onclick="loadTimes = []; locateViaCors(CRAIGSLIST_OHIO_DOMAINS)">Click for CORS demo (Any Browser), check console (F12)</a></li>
+							</div>
+						</ul>
+					</section>
 				</section>
-
 				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+					<section>
+						<h2>Locating a Victim's Neighborhood</h2>
+						<ul>
+							<li>Google Maps tiles are cached with coordinate information</li>
+							<pre class="fragment"><code data-noescape>google.com/maps/vt/pb=!1m5!1m4!1i15!2i<mark>12627</mark>!3i<mark>23720</mark>!4i128!2m1!1e0!3m3!5e1105!12m1!1e47!4e0</code></pre>
+							<li class="fragment">A specific area will have similar URLs so it is possible to predict the URL for other map tiles</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Experiment</h2>
+						<ul>
+							<li>Utilized the &lt;img&gt; method and analyzed load times</li>
+							<li class="fragment">Measured image load time of 4,646 map tiles in New York City</li>
+							<li class="fragment">Each tile queried 3 times and the first query was compared to the other 2</li>
+							<li class="fragment">Max Age in Cache-Control header: 22222222ms ~ 6.17 hours</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<ul>
+							<img width="1142" height="287" data-src="images/neighborhood-graph.PNG" alt="Locating Neighborhood Graph">
+							<li class="fragment">Difference between cache hit and cache miss was large and easily seen</li>
+							<li class="fragment"><a href="#/6/2" onclick="loadTimes = []; locateViaLoadTimeMaps(GOOGLE_MAPS_LIST)">Click for Demo (Any Browser), check console (F12)</a></li>
+							<aside class="notes"><a href="https://www.google.com/maps/@41.5043453,-81.6105725,17z">Prime Cache</a></aside>
+						</ul>
+					</section>
 				</section>
-
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+					<section>
+						<h2>Reliability of Timing-Based Attacks</h2>
+						<ul>
+							<li>Chrome, Firefox, Safari, Opera, and IE are all vulnerable</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Experiment</h2>
+						<ul>
+							<li>Measure page load times 3 times per site against the top 100 Alexa websites</li>
+							<li class="fragment">The average of the 2nd and 3rd measurements are considered cache hit times</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<ul>
+							<img width="1451" height="265" data-src="images/top-alexa-graph.PNG" alt="Locating Neighborhood Graph">
+							<li class="fragment">Can reliably measure load time and sniff browser history</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Some Observations</h2>
+						<ul>
+							<li>Websites can set X-Frame-Options to SAMEORIGIN or DENY in response headers</li>
+							<li class="fragment">This would prevent loading sites into frames</li>
+							<li class="fragment">Page load time would equal request load time preventing this attack</li>
+							<li class="fragment">However, location-specific resources can still be targeted individually</li>
+						</ul>
+					</section>
 				</section>
-
 				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
+					<section>
+						<h2>Prevalence of Location-Specific Resources</h2>
+						<ul>
+							<li>How many websites utilize location-sensitive resources?</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Experiment</h2>
+						<ul>
+							<li>Analyzed top 100 Alexa websites and identified location-sensitive sites and their resources</li>
+							<li class="fragment">Excluded 45 domains due to the following:</li>
+							<ul class="fragment">
+								<li>Sites related to specific countries (e.g. google.de)</li>
+								<li>Sites with pornographic material</li>
+								<li>Unreachable sites (e.g. akamaihd.net)</li>
+							</ul>
+							<li class="fragment">Visited 55 websites in 5 different countries and recorded URLs of cached resources</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<ul>
+							<li>62% of the analyzed websites have location-specific resources</li>
+							<li>A user having visited any of those sites would be vulnerable to the geo-inference attacks</li>
+						</ul>
+					</section>
 				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
 				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
+					<section>
+						<h2>Is this an Effective Attack?</h2>
+						<ul>
+							<li>Does not directly pinpoint geo-locations of users</li>
+							<li class="fragment">Can only verify if a user has been to a given location</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Usage Examples</h2>
+						<ul>
+							<li>Paper author wants to know which of 20 cities a review came from</li>
+							<li>Targeting specific areas</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Problems with Time</h2>
+						<ul>
+							<li>Google Maps has 4,646 map tiles for New York City alone</li>
+							<li>5-10 geo-locations can verified every second</li>
+							<li>Can take up to 8 minutes of time</li>
+							<li class="fragment">Can reduce time by running calls in parallel</li>
+						</ul>
+					</section>
 				</section>
-
 				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
+					<section>
+						<h2>Potential Defenses</h2>
+						<ul>
+							<li>Existing defenses can prevent this type of attack</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What Doesn't Work</h2>
+						<ul>
+							<li>Private browsing</li>
+							<ul>
+								<li>Cache is only cleared once the browser is closed not during its use</li>
+							</ul>
+							<div class="fragment">
+								<li>VPN</li>
+								<ul>
+									<li>Masking an IP Address does nothing about the browser cache</li>
+								</ul>
+							</div>
+							<div class="fragment">
+								<li>Tor</li>
+								<ul>
+									<li>Tor browser disables disk cache by default</li>
+									<li class="fragment">Browser cache is still active in <u>memory</u></li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>What Could Work</h2>
+						<ul>
+							<li>Segregating browser cache between websites</li>
+							<ul>
+								<li>Would work but is expensive in terms of load time</li>
+								<li>50% performance overhead</li>
+							</ul>
+							<div class="fragment">
+								<li>XMLHttpRequest</li>
+								<ul>
+									<li>Browsers can block status notifications if the website denied the request to access it</li>
+									<li>Would prevent the CORS & &lt;iframe&gt; methods but &lt;img&gt; method could still work</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>What Else Could Work?</h2>
+						<ul>
+							<li>Add noise into measurement mechanisms related to browser cache queries</li>
+							<ul>
+								<li>Would need to be carefully engineered to not interfere with browser performance</li>
+							</ul>
+							<div class="fragment">
+								<li>Server-side protection</li>
+								<ul>
+									<li>Websites may switch to non-geo-targeting mode upon request of users</li>
+									<li>Likely will degrade site performance</li>
+									<li class="fragment">Could also periodically randomize URLs of geo-targeting resources</li>
+									<li class="fragment">Could also use cache-invalidating headers in HTTP response on location-based resources</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Even More Solutions</h2>
+						<ul>
+							<li>Server-side protection Part 2</li>
+							<ul>
+								<li class="fragment">Prototype tool collects URLs of cached resources and labels location-sensitive resources</li>
+								<li class="fragment">Can be utilized to identify resources that require the cache-invalidating header</li>
+							</ul>
+							<div class="fragment">
+								<li>Browsers can allow end users to opt out of caching</li>
+								<ul>
+									<li>In solutions aimed for privacy, it should be the default option</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Some Ideas of My Own</h2>
+						<ul>
+							<li>Browser extension</li>
+							<ul>
+								<li>Automatically clear the browser cache on each tab open and close</li>
+								<li>Could make it smarter by only clearing items in cache containing a given URL</li>
+							</ul>
+							<div class="fragment">
+								<li>&lt;img&gt; tags are not treated with the same restrictions as straight web requests from the client</li>
+								<ul>
+									<li>Browsers could treat &lt;img&gt; tags with the same restrictions as CORS requests</li>
+									<li class="fragment">Could break a significant portion of websites with this change (ex: <i>Buzzfeed</i>)</li>
+								</ul>
+							</div>
+						</ul>
+					</section>
 				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
+				<section>
+					<h2>Some Thoughts</h2>
+					<li>If I can convince a user to visit my site, couldn't I just have malware downloaded to their machine?</li>
+					<li class="fragment">It's slightly misleading when they say they've scanned the top 100 Alexa websites when they left out almost half</li>
 				</section>
-
+				<section>
+					<h2>Slides Available Here</h2>
+					<h3><a href="http://mdoleh.github.io/Geolocation-Inference/">http://mdoleh.github.io/Geolocation-Inference/</a></h3>
+				</section>
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -391,8 +519,9 @@ Reveal.addEventListener( 'customevent', function() {
 				progress: true,
 				history: true,
 				center: true,
+				slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
@@ -405,6 +534,125 @@ Reveal.addEventListener( 'customevent', function() {
 				]
 			});
 
+			function locateViaCompleteTag(list, imgUrl) {
+				for (var i = 0; i < list.length; ++i)
+				{
+					var img = document.createElement("img");
+					var url = list[i].replace("http://", "http://www.");
+					img.src = url + imgUrl;
+					if (img.complete || img.width + img.height > 0) console.info(list[i]);
+				}
+			}
+			
+			function locateViaLoadTimeMaps(list)
+			{
+				for (var i = 0; i < list.length; ++i)
+				{
+					loadTimes.push([]);
+					requestImage("https://www.google.com/maps/vt/" + list[i], i);
+				}
+			}
+			
+			function requestImage(imgSrc, index) {
+				var img = document.createElement("img");
+				img.setAttribute("start", new Date().getTime());
+				img.setAttribute("index", index);
+				img.src = imgSrc;
+				img.onload = imageLoadCallback;
+			}
+			
+			var imageLoadCallback = function() {
+				console.info("Request Complete");
+				var end = new Date().getTime();
+				var difference = end - getAttributeNumber(this, "start");
+				var index = getAttributeNumber(this, "index");
+				loadTimes[index].push({ loadTime: difference, src: this.src});
+				if (loadTimes[index].length === 3) wasCached(loadTimes[index], 100);
+				if (loadTimes[index].length != 3) requestImage(this.src, index);
+			}
+			
+			function getAttributeNumber(self, attrName) {
+				if (self.getAttribute)
+					return parseInt(self.getAttribute(attrName));
+				else
+					return self[attrName];
+			}
+			
+			function wasCached(list, threshold) {
+				var first = list[0].loadTime;
+				var cachedAvg = (list[1].loadTime + list[2].loadTime) / 2.0;
+				if (first - cachedAvg < threshold) console.info(list[0].src);
+			}
+			
+			function locateViaLoadTime(list, imgUrl) {
+				for (var i = 0; i < list.length; ++i)
+				{
+					loadTimes.push([]);
+					var img = document.createElement("img");
+					var url = list[i].replace("http://", "http://www.");
+					img.setAttribute("start", new Date().getTime());
+					img.setAttribute("index", i);
+					img.src = url + imgUrl;
+					img.onload = imageLoadCallback;
+				}
+			}
+			 
+			function locateViaIframe(list) {
+				for (var i = 0; i < list.length; ++i) {
+					iframeRequest(list[i], i);
+				}
+			}
+			
+			function iframeRequest(src, index) {
+				var page = document.createElement('iframe');
+				page.setAttribute('start', (new Date()).getTime());
+				page.src = src;
+				page.onload = loadCallback(function (src, index) { iframeRequest(src, index); });
+				document.getElementsByTagName("body")[0].appendChild(page);
+			}
+			
+			function locateViaCors(list) {
+				for (var i = 0; i < list.length; ++i)
+				{
+					loadTimes.push([]);
+					xhrRequest(list[i], i);
+				}
+			}
+			
+			function xhrRequest(src, index) {
+				xmlHttp = new XMLHttpRequest();
+				xmlHttp.open("GET", src);
+				xmlHttp.src = src;
+				xmlHttp.index = index;
+				xmlHttp.start = (new Date()).getTime();
+				xmlHttp.onloadend = loadCallback(function (src, index) { xhrRequest(src, index); });
+				xmlHttp.send();
+			}
+			
+			var loadCallback = function(makeRequest) {
+				return function () {
+					console.info("Request Complete");
+					var end = new Date().getTime();
+					var difference = end - getAttributeNumber(this, "start");
+					var index = getAttributeNumber(this, "index");
+					loadTimes[index].push({ loadTime: difference, src: this.src});
+					if (loadTimes[index].length === 3) wasCached(loadTimes[index], 100);
+					if (loadTimes[index].length != 3) makeRequest(this.src, index);
+				}
+			}
+			
+			var GOOGLE_DOMAIN_LIST = JSON.parse('["http://google.com/","http://google.ac/","http://google.ad/","http://google.ae/","http://google.com.af/","http://google.com.ag/","http://google.com.ai/","http://google.al/","http://google.am/","http://google.co.ao/","http://google.com.ar/","http://google.as/","http://google.at/","http://google.com.au/","http://google.az/","http://google.ba/","http://google.com.bd/","http://google.be/","http://google.bf/","http://google.bg/","http://google.com.bh/","http://google.bi/","http://google.bj/","http://google.com.bn/","http://google.com.bo/","http://google.com.br/","http://google.bs/","http://google.bt/","http://google.co.bw/","http://google.by/","http://google.com.bz/","http://google.ca/","http://google.com.kh/","http://google.cc/","http://google.cd/","http://google.cf/","http://google.cat/","http://google.cg/","http://google.ch/","http://google.ci/","http://google.co.ck/","http://google.cl/","http://google.cm/","http://google.cn/","http://google.com.co/","http://google.co.cr/","http://google.com.cu/","http://google.cv/","http://google.com.cy/","http://google.cz/","http://google.de/","http://google.dj/","http://google.dk/","http://google.dm/","http://google.com.do/","http://google.dz/","http://google.com.ec/","http://google.ee/","http://google.com.eg/","http://google.es/","http://google.com.et/","http://google.fi/","http://google.com.fj/","http://google.fm/","http://google.fr/","http://google.ga/","http://google.ge/","http://google.gf/","http://google.gg/","http://google.com.gh/","http://google.com.gi/","http://google.gl/","http://google.gm/","http://google.gp/","http://google.gr/","http://google.com.gt/","http://google.gy/","http://google.com.hk/","http://google.hn/","http://google.hr/","http://google.ht/","http://google.hu/","http://google.co.id/","http://google.iq/","http://google.ie/","http://google.co.il/","http://google.im/","http://google.co.in/","http://google.io/","http://google.is/","http://google.it/","http://google.je/","http://google.com.jm/","http://google.jo/","http://google.co.jp/","http://google.co.ke/","http://google.ki/","http://google.kg/","http://google.co.kr/","http://google.com.kw/","http://google.kz/","http://google.la/","http://google.com.lb/","http://google.com.lc/","http://google.li/","http://google.lk/","http://google.co.ls/","http://google.lt/","http://google.lu/","http://google.lv/","http://google.com.ly/","http://google.co.ma/","http://google.md/","http://google.me/","http://google.mg/","http://google.mk/","http://google.ml/","http://google.com.mm/","http://google.mn/","http://google.ms/","http://google.com.mt/","http://google.mu/","http://google.mv/","http://google.mw/","http://google.com.mx/","http://google.com.my/","http://google.co.mz/","http://google.com.na/","http://google.ne/","http://google.com.nf/","http://google.com.ng/","http://google.com.ni/","http://google.nl/","http://google.no/","http://google.com.np/","http://google.nr/","http://google.nu/","http://google.co.nz/","http://google.com.om/","http://google.com.pk/","http://google.com.pa/","http://google.com.pe/","http://google.com.ph/","http://google.pl/","http://google.com.pg/","http://google.pn/","http://google.co.pn/","http://google.com.pr/","http://google.ps/","http://google.pt/","http://google.com.py/","http://google.com.qa/","http://google.ro/","http://google.rs/","http://google.ru/","http://google.rw/","http://google.com.sa/","http://google.com.sb/","http://google.sc/","http://google.se/","http://google.com.sg/","http://google.sh/","http://google.si/","http://google.sk/","http://google.com.sl/","http://google.sn/","http://google.sm/","http://google.so/","http://google.st/","http://google.sr/","http://google.com.sv/","http://google.td/","http://google.tg/","http://google.co.th/","http://google.com.tj/","http://google.tk/","http://google.tl/","http://google.tm/","http://google.to/","http://google.tn/","http://google.com.tr/","http://google.tt/","http://google.com.tw/","http://google.co.tz/","http://google.com.ua/","http://google.co.ug/","http://google.co.uk/","http://google.com/","http://google.com.uy/","http://google.co.uz/","http://google.com.vc/","http://google.co.ve/","http://google.vg/","http://google.co.vi/","http://google.com.vn/","http://google.vu/","http://google.ws/","http://google.co.za/","http://google.co.zm/","http://google.co.zw/"]');
+			var CRAIGSLIST_DOMAINS = JSON.parse('["https://auburn.craigslist.org/","https://bham.craigslist.org/","https://dothan.craigslist.org/","https://shoals.craigslist.org/","https://gadsden.craigslist.org/","https://huntsville.craigslist.org/","https://mobile.craigslist.org/","https://montgomery.craigslist.org/","https://tuscaloosa.craigslist.org/","https://anchorage.craigslist.org/","https://fairbanks.craigslist.org/","https://kenai.craigslist.org/","https://juneau.craigslist.org/","https://flagstaff.craigslist.org/","https://mohave.craigslist.org/","https://phoenix.craigslist.org/","https://prescott.craigslist.org/","https://showlow.craigslist.org/","https://sierravista.craigslist.org/","https://tucson.craigslist.org/","https://yuma.craigslist.org/","https://fayar.craigslist.org/","https://fortsmith.craigslist.org/","https://jonesboro.craigslist.org/","https://littlerock.craigslist.org/","https://texarkana.craigslist.org/","https://bakersfield.craigslist.org/","https://chico.craigslist.org/","https://fresno.craigslist.org/","https://goldcountry.craigslist.org/","https://hanford.craigslist.org/","https://humboldt.craigslist.org/","https://imperial.craigslist.org/","https://inlandempire.craigslist.org/","https://losangeles.craigslist.org/","https://mendocino.craigslist.org/","https://merced.craigslist.org/","https://modesto.craigslist.org/","https://monterey.craigslist.org/","https://orangecounty.craigslist.org/","https://palmsprings.craigslist.org/","https://redding.craigslist.org/","https://sacramento.craigslist.org/","https://sandiego.craigslist.org/","https://sfbay.craigslist.org/","https://slo.craigslist.org/","https://santabarbara.craigslist.org/","https://santamaria.craigslist.org/","https://siskiyou.craigslist.org/","https://stockton.craigslist.org/","https://susanville.craigslist.org/","https://ventura.craigslist.org/","https://visalia.craigslist.org/","https://yubasutter.craigslist.org/","https://boulder.craigslist.org/","https://cosprings.craigslist.org/","https://denver.craigslist.org/","https://eastco.craigslist.org/","https://fortcollins.craigslist.org/","https://rockies.craigslist.org/","https://pueblo.craigslist.org/","https://westslope.craigslist.org/","https://newlondon.craigslist.org/","https://hartford.craigslist.org/","https://newhaven.craigslist.org/","https://nwct.craigslist.org/","https://delaware.craigslist.org/","https://washingtondc.craigslist.org/","https://miami.craigslist.org/brw","https://daytona.craigslist.org/","https://keys.craigslist.org/","https://fortlauderdale.craigslist.org/","https://fortmyers.craigslist.org/","https://gainesville.craigslist.org/","https://cfl.craigslist.org/","https://jacksonville.craigslist.org/","https://lakeland.craigslist.org/","https://miami.craigslist.org/mdc","https://lakecity.craigslist.org/","https://ocala.craigslist.org/","https://okaloosa.craigslist.org/","https://orlando.craigslist.org/","https://panamacity.craigslist.org/","https://pensacola.craigslist.org/","https://sarasota.craigslist.org/","https://miami.craigslist.org/","https://spacecoast.craigslist.org/","https://staugustine.craigslist.org/","https://tallahassee.craigslist.org/","https://tampa.craigslist.org/","https://treasure.craigslist.org/","https://miami.craigslist.org/pbc","https://albanyga.craigslist.org/","https://athensga.craigslist.org/","https://atlanta.craigslist.org/","https://augusta.craigslist.org/","https://brunswick.craigslist.org/","https://columbusga.craigslist.org/","https://macon.craigslist.org/","https://nwga.craigslist.org/","https://savannah.craigslist.org/","https://statesboro.craigslist.org/","https://valdosta.craigslist.org/","https://honolulu.craigslist.org/","https://boise.craigslist.org/","https://eastidaho.craigslist.org/","https://lewiston.craigslist.org/","https://twinfalls.craigslist.org/","https://bn.craigslist.org/","https://chambana.craigslist.org/","https://chicago.craigslist.org/","https://decatur.craigslist.org/","https://lasalle.craigslist.org/","https://mattoon.craigslist.org/","https://peoria.craigslist.org/","https://rockford.craigslist.org/","https://carbondale.craigslist.org/","https://springfieldil.craigslist.org/","https://quincy.craigslist.org/","https://bloomington.craigslist.org/","https://evansville.craigslist.org/","https://fortwayne.craigslist.org/","https://indianapolis.craigslist.org/","https://kokomo.craigslist.org/","https://tippecanoe.craigslist.org/","https://muncie.craigslist.org/","https://richmondin.craigslist.org/","https://southbend.craigslist.org/","https://terrehaute.craigslist.org/","https://ames.craigslist.org/","https://cedarrapids.craigslist.org/","https://desmoines.craigslist.org/","https://dubuque.craigslist.org/","https://fortdodge.craigslist.org/","https://iowacity.craigslist.org/","https://masoncity.craigslist.org/","https://quadcities.craigslist.org/","https://siouxcity.craigslist.org/","https://ottumwa.craigslist.org/","https://waterloo.craigslist.org/","https://lawrence.craigslist.org/","https://ksu.craigslist.org/","https://nwks.craigslist.org/","https://salina.craigslist.org/","https://seks.craigslist.org/","https://swks.craigslist.org/","https://topeka.craigslist.org/","https://wichita.craigslist.org/","https://bgky.craigslist.org/","https://eastky.craigslist.org/","https://lexington.craigslist.org/","https://louisville.craigslist.org/","https://owensboro.craigslist.org/","https://westky.craigslist.org/","https://batonrouge.craigslist.org/","https://cenla.craigslist.org/","https://houma.craigslist.org/","https://lafayette.craigslist.org/","https://lakecharles.craigslist.org/","https://monroe.craigslist.org/","https://neworleans.craigslist.org/","https://shreveport.craigslist.org/","https://maine.craigslist.org/","https://annapolis.craigslist.org/","https://baltimore.craigslist.org/","https://easternshore.craigslist.org/","https://frederick.craigslist.org/","https://smd.craigslist.org/","https://westmd.craigslist.org/","https://boston.craigslist.org/","https://capecod.craigslist.org/","https://southcoast.craigslist.org/","https://westernmass.craigslist.org/","https://worcester.craigslist.org/","https://annarbor.craigslist.org/","https://battlecreek.craigslist.org/","https://centralmich.craigslist.org/","https://detroit.craigslist.org/","https://flint.craigslist.org/","https://grandrapids.craigslist.org/","https://holland.craigslist.org/","https://jxn.craigslist.org/","https://kalamazoo.craigslist.org/","https://lansing.craigslist.org/","https://monroemi.craigslist.org/","https://muskegon.craigslist.org/","https://nmi.craigslist.org/","https://porthuron.craigslist.org/","https://saginaw.craigslist.org/","https://swmi.craigslist.org/","https://thumb.craigslist.org/","https://up.craigslist.org/","https://bemidji.craigslist.org/","https://brainerd.craigslist.org/","https://duluth.craigslist.org/","https://mankato.craigslist.org/","https://minneapolis.craigslist.org/","https://rmn.craigslist.org/","https://marshall.craigslist.org/","https://stcloud.craigslist.org/","https://gulfport.craigslist.org/","https://hattiesburg.craigslist.org/","https://jackson.craigslist.org/","https://meridian.craigslist.org/","https://northmiss.craigslist.org/","https://natchez.craigslist.org/","https://columbiamo.craigslist.org/","https://joplin.craigslist.org/","https://kansascity.craigslist.org/","https://kirksville.craigslist.org/","https://loz.craigslist.org/","https://semo.craigslist.org/","https://springfield.craigslist.org/","https://stjoseph.craigslist.org/","https://stlouis.craigslist.org/","https://billings.craigslist.org/","https://bozeman.craigslist.org/","https://butte.craigslist.org/","https://greatfalls.craigslist.org/","https://helena.craigslist.org/","https://kalispell.craigslist.org/","https://missoula.craigslist.org/","https://montana.craigslist.org/","https://grandisland.craigslist.org/","https://lincoln.craigslist.org/","https://northplatte.craigslist.org/","https://omaha.craigslist.org/","https://scottsbluff.craigslist.org/","https://elko.craigslist.org/","https://lasvegas.craigslist.org/","https://reno.craigslist.org/","https://nh.craigslist.org/","https://cnj.craigslist.org/","https://jerseyshore.craigslist.org/","https://newjersey.craigslist.org/","https://southjersey.craigslist.org/","https://albuquerque.craigslist.org/","https://clovis.craigslist.org/","https://farmington.craigslist.org/","https://lascruces.craigslist.org/","https://roswell.craigslist.org/","https://santafe.craigslist.org/","https://albany.craigslist.org/","https://binghamton.craigslist.org/","https://buffalo.craigslist.org/","https://catskills.craigslist.org/","https://chautauqua.craigslist.org/","https://elmira.craigslist.org/","https://fingerlakes.craigslist.org/","https://glensfalls.craigslist.org/","https://hudsonvalley.craigslist.org/","https://ithaca.craigslist.org/","https://longisland.craigslist.org/","https://newyork.craigslist.org/","https://oneonta.craigslist.org/","https://plattsburgh.craigslist.org/","https://potsdam.craigslist.org/","https://rochester.craigslist.org/","https://syracuse.craigslist.org/","https://twintiers.craigslist.org/","https://utica.craigslist.org/","https://watertown.craigslist.org/","https://asheville.craigslist.org/","https://boone.craigslist.org/","https://charlotte.craigslist.org/","https://eastnc.craigslist.org/","https://fayetteville.craigslist.org/","https://greensboro.craigslist.org/","https://hickory.craigslist.org/","https://onslow.craigslist.org/","https://outerbanks.craigslist.org/","https://raleigh.craigslist.org/","https://wilmington.craigslist.org/","https://winstonsalem.craigslist.org/","https://bismarck.craigslist.org/","https://fargo.craigslist.org/","https://grandforks.craigslist.org/","https://nd.craigslist.org/","https://akroncanton.craigslist.org/","https://ashtabula.craigslist.org/","https://athensohio.craigslist.org/","https://chillicothe.craigslist.org/","https://cincinnati.craigslist.org/","https://cleveland.craigslist.org/","https://columbus.craigslist.org/","https://dayton.craigslist.org/","https://limaohio.craigslist.org/","https://mansfield.craigslist.org/","https://sandusky.craigslist.org/","https://toledo.craigslist.org/","https://tuscarawas.craigslist.org/","https://youngstown.craigslist.org/","https://zanesville.craigslist.org/","https://lawton.craigslist.org/","https://enid.craigslist.org/","https://oklahomacity.craigslist.org/","https://stillwater.craigslist.org/","https://tulsa.craigslist.org/","https://bend.craigslist.org/","https://corvallis.craigslist.org/","https://eastoregon.craigslist.org/","https://eugene.craigslist.org/","https://klamath.craigslist.org/","https://medford.craigslist.org/","https://oregoncoast.craigslist.org/","https://portland.craigslist.org/","https://roseburg.craigslist.org/","https://salem.craigslist.org/","https://altoona.craigslist.org/","https://chambersburg.craigslist.org/","https://erie.craigslist.org/","https://harrisburg.craigslist.org/","https://lancaster.craigslist.org/","https://allentown.craigslist.org/","https://meadville.craigslist.org/","https://philadelphia.craigslist.org/","https://pittsburgh.craigslist.org/","https://poconos.craigslist.org/","https://reading.craigslist.org/","https://scranton.craigslist.org/","https://pennstate.craigslist.org/","https://williamsport.craigslist.org/","https://york.craigslist.org/","https://providence.craigslist.org/","https://charleston.craigslist.org/","https://columbia.craigslist.org/","https://florencesc.craigslist.org/","https://greenville.craigslist.org/","https://hiltonhead.craigslist.org/","https://myrtlebeach.craigslist.org/","https://nesd.craigslist.org/","https://csd.craigslist.org/","https://rapidcity.craigslist.org/","https://siouxfalls.craigslist.org/","https://sd.craigslist.org/","https://chattanooga.craigslist.org/","https://clarksville.craigslist.org/","https://cookeville.craigslist.org/","https://jacksontn.craigslist.org/","https://knoxville.craigslist.org/","https://memphis.craigslist.org/","https://nashville.craigslist.org/","https://tricities.craigslist.org/","https://abilene.craigslist.org/","https://amarillo.craigslist.org/","https://austin.craigslist.org/","https://beaumont.craigslist.org/","https://brownsville.craigslist.org/","https://collegestation.craigslist.org/","https://corpuschristi.craigslist.org/","https://dallas.craigslist.org/","https://nacogdoches.craigslist.org/","https://delrio.craigslist.org/","https://elpaso.craigslist.org/","https://galveston.craigslist.org/","https://houston.craigslist.org/","https://killeen.craigslist.org/","https://laredo.craigslist.org/","https://lubbock.craigslist.org/","https://mcallen.craigslist.org/","https://odessa.craigslist.org/","https://sanangelo.craigslist.org/","https://sanantonio.craigslist.org/","https://sanmarcos.craigslist.org/","https://bigbend.craigslist.org/","https://texoma.craigslist.org/","https://easttexas.craigslist.org/","https://victoriatx.craigslist.org/","https://waco.craigslist.org/","https://wichitafalls.craigslist.org/","https://logan.craigslist.org/","https://ogden.craigslist.org/","https://provo.craigslist.org/","https://saltlakecity.craigslist.org/","https://stgeorge.craigslist.org/","https://burlington.craigslist.org/","https://charlottesville.craigslist.org/","https://danville.craigslist.org/","https://fredericksburg.craigslist.org/","https://norfolk.craigslist.org/","https://harrisonburg.craigslist.org/","https://lynchburg.craigslist.org/","https://blacksburg.craigslist.org/","https://richmond.craigslist.org/","https://roanoke.craigslist.org/","https://swva.craigslist.org/","https://winchester.craigslist.org/","https://bellingham.craigslist.org/","https://kpr.craigslist.org/","https://moseslake.craigslist.org/","https://olympic.craigslist.org/","https://pullman.craigslist.org/","https://seattle.craigslist.org/","https://skagit.craigslist.org/","https://spokane.craigslist.org/","https://wenatchee.craigslist.org/","https://yakima.craigslist.org/","https://charlestonwv.craigslist.org/","https://martinsburg.craigslist.org/","https://huntington.craigslist.org/","https://morgantown.craigslist.org/","https://wheeling.craigslist.org/","https://parkersburg.craigslist.org/","https://swv.craigslist.org/","https://wv.craigslist.org/","https://appleton.craigslist.org/","https://eauclaire.craigslist.org/","https://greenbay.craigslist.org/","https://janesville.craigslist.org/","https://racine.craigslist.org/","https://lacrosse.craigslist.org/","https://madison.craigslist.org/","https://milwaukee.craigslist.org/","https://northernwi.craigslist.org/","https://sheboygan.craigslist.org/","https://wausau.craigslist.org/","https://wyoming.craigslist.org/","https://micronesia.craigslist.org/","https://puertorico.craigslist.org/","https://virgin.craigslist.org/","https://calgary.craigslist.ca/","https://edmonton.craigslist.ca/","https://ftmcmurray.craigslist.ca/","https://lethbridge.craigslist.ca/","https://hat.craigslist.ca/","https://peace.craigslist.ca/","https://reddeer.craigslist.ca/","https://cariboo.craigslist.ca/","https://comoxvalley.craigslist.ca/","https://abbotsford.craigslist.ca/","https://kamloops.craigslist.ca/","https://kelowna.craigslist.ca/","https://cranbrook.craigslist.ca/","https://nanaimo.craigslist.ca/","https://princegeorge.craigslist.ca/","https://skeena.craigslist.ca/","https://sunshine.craigslist.ca/","https://vancouver.craigslist.ca/","https://victoria.craigslist.ca/","https://whistler.craigslist.ca/","https://winnipeg.craigslist.ca/","https://newbrunswick.craigslist.ca/","https://newfoundland.craigslist.ca/","https://territories.craigslist.ca/","https://yellowknife.craigslist.ca/","https://halifax.craigslist.ca/","https://barrie.craigslist.ca/","https://belleville.craigslist.ca/","https://brantford.craigslist.ca/","https://chatham.craigslist.ca/","https://cornwall.craigslist.ca/","https://guelph.craigslist.ca/","https://hamilton.craigslist.ca/","https://kingston.craigslist.ca/","https://kitchener.craigslist.ca/","https://londonon.craigslist.ca/","https://niagara.craigslist.ca/","https://ottawa.craigslist.ca/","https://owensound.craigslist.ca/","https://peterborough.craigslist.ca/","https://sarnia.craigslist.ca/","https://soo.craigslist.ca/","https://sudbury.craigslist.ca/","https://thunderbay.craigslist.ca/","https://toronto.craigslist.ca/","https://windsor.craigslist.ca/","https://pei.craigslist.ca/","https://montreal.craigslist.ca/","https://quebec.craigslist.ca/","https://saguenay.craigslist.ca/","https://sherbrooke.craigslist.ca/","https://troisrivieres.craigslist.ca/","https://regina.craigslist.ca/","https://saskatoon.craigslist.ca/","https://whitehorse.craigslist.ca/","https://vienna.craigslist.at/","https://brussels.craigslist.org/","https://bulgaria.craigslist.org/","https://zagreb.craigslist.org/","https://prague.craigslist.cz/","https://copenhagen.craigslist.org/","https://helsinki.craigslist.fi/","https://bordeaux.craigslist.org/","https://rennes.craigslist.org/","https://grenoble.craigslist.org/","https://lille.craigslist.org/","https://loire.craigslist.org/","https://lyon.craigslist.org/","https://marseilles.craigslist.org/","https://montpellier.craigslist.org/","https://cotedazur.craigslist.org/","https://rouen.craigslist.org/","https://paris.craigslist.org/","https://strasbourg.craigslist.org/","https://toulouse.craigslist.org/","https://berlin.craigslist.de/","https://bremen.craigslist.de/","https://cologne.craigslist.de/","https://dresden.craigslist.de/","https://dusseldorf.craigslist.de/","https://essen.craigslist.de/","https://frankfurt.craigslist.de/","https://hamburg.craigslist.de/","https://hannover.craigslist.de/","https://heidelberg.craigslist.de/","https://kaiserslautern.craigslist.de/","https://leipzig.craigslist.de/","https://munich.craigslist.de/","https://nuremberg.craigslist.de/","https://stuttgart.craigslist.de/","https://athens.craigslist.gr/","https://budapest.craigslist.org/","https://reykjavik.craigslist.org/","https://dublin.craigslist.org/","https://bologna.craigslist.it/","https://florence.craigslist.it/","https://genoa.craigslist.it/","https://milan.craigslist.it/","https://naples.craigslist.it/","https://perugia.craigslist.it/","https://rome.craigslist.it/","https://sardinia.craigslist.it/","https://sicily.craigslist.it/","https://torino.craigslist.it/","https://venice.craigslist.it/","https://luxembourg.craigslist.org/","https://amsterdam.craigslist.org/","https://oslo.craigslist.org/","https://warsaw.craigslist.pl/","https://faro.craigslist.pt/","https://lisbon.craigslist.pt/","https://porto.craigslist.pt/","https://bucharest.craigslist.org/","https://moscow.craigslist.org/","https://stpetersburg.craigslist.org/","https://alicante.craigslist.es/","https://baleares.craigslist.es/","https://barcelona.craigslist.es/","https://bilbao.craigslist.es/","https://cadiz.craigslist.es/","https://canarias.craigslist.es/","https://granada.craigslist.es/","https://madrid.craigslist.es/","https://malaga.craigslist.es/","https://sevilla.craigslist.es/","https://valencia.craigslist.es/","https://stockholm.craigslist.se/","https://basel.craigslist.ch/","https://bern.craigslist.ch/","https://geneva.craigslist.ch/","https://lausanne.craigslist.ch/","https://zurich.craigslist.ch/","https://istanbul.craigslist.com.tr/","https://ukraine.craigslist.org/","https://aberdeen.craigslist.co.uk/","https://bath.craigslist.co.uk/","https://belfast.craigslist.co.uk/","https://birmingham.craigslist.co.uk/","https://brighton.craigslist.co.uk/","https://bristol.craigslist.co.uk/","https://cambridge.craigslist.co.uk/","https://cardiff.craigslist.co.uk/","https://coventry.craigslist.co.uk/","https://derby.craigslist.co.uk/","https://devon.craigslist.co.uk/","https://dundee.craigslist.co.uk/","https://norwich.craigslist.co.uk/","https://eastmids.craigslist.co.uk/","https://edinburgh.craigslist.co.uk/","https://essex.craigslist.co.uk/","https://glasgow.craigslist.co.uk/","https://hampshire.craigslist.co.uk/","https://kent.craigslist.co.uk/","https://leeds.craigslist.co.uk/","https://liverpool.craigslist.co.uk/","https://london.craigslist.co.uk/","https://manchester.craigslist.co.uk/","https://newcastle.craigslist.co.uk/","https://nottingham.craigslist.co.uk/","https://oxford.craigslist.co.uk/","https://sheffield.craigslist.co.uk/","https://bangladesh.craigslist.org/","https://beijing.craigslist.com.cn/","https://chengdu.craigslist.com.cn/","https://chongqing.craigslist.com.cn/","https://dalian.craigslist.com.cn/","https://guangzhou.craigslist.com.cn/","https://hangzhou.craigslist.com.cn/","https://nanjing.craigslist.com.cn/","https://shanghai.craigslist.com.cn/","https://shenyang.craigslist.com.cn/","https://shenzhen.craigslist.com.cn/","https://wuhan.craigslist.com.cn/","https://xian.craigslist.com.cn/","https://micronesia.craigslist.org/","https://hongkong.craigslist.hk/","https://ahmedabad.craigslist.co.in/","https://bangalore.craigslist.co.in/","https://bhubaneswar.craigslist.co.in/","https://chandigarh.craigslist.co.in/","https://chennai.craigslist.co.in/","https://delhi.craigslist.co.in/","https://goa.craigslist.co.in/","https://hyderabad.craigslist.co.in/","https://indore.craigslist.co.in/","https://jaipur.craigslist.co.in/","https://kerala.craigslist.co.in/","https://kolkata.craigslist.co.in/","https://lucknow.craigslist.co.in/","https://mumbai.craigslist.co.in/","https://pune.craigslist.co.in/","https://surat.craigslist.co.in/","https://jakarta.craigslist.org/","https://tehran.craigslist.org/","https://baghdad.craigslist.org/","https://haifa.craigslist.org/","https://jerusalem.craigslist.org/","https://telaviv.craigslist.org/","https://ramallah.craigslist.org/","https://fukuoka.craigslist.jp/","https://hiroshima.craigslist.jp/","https://nagoya.craigslist.jp/","https://okinawa.craigslist.jp/","https://osaka.craigslist.jp/","https://sapporo.craigslist.jp/","https://sendai.craigslist.jp/","https://tokyo.craigslist.jp/","https://seoul.craigslist.co.kr/","https://kuwait.craigslist.org/","https://beirut.craigslist.org/","https://malaysia.craigslist.org/","https://pakistan.craigslist.org/","https://bacolod.craigslist.com.ph/","https://naga.craigslist.com.ph/","https://cdo.craigslist.com.ph/","https://cebu.craigslist.com.ph/","https://davaocity.craigslist.com.ph/","https://iloilo.craigslist.com.ph/","https://manila.craigslist.com.ph/","https://pampanga.craigslist.com.ph/","https://zamboanga.craigslist.com.ph/","https://singapore.craigslist.com.sg/","https://taipei.craigslist.com.tw/","https://bangkok.craigslist.co.th/","https://dubai.craigslist.org/","https://vietnam.craigslist.org/","https://adelaide.craigslist.com.au/","https://brisbane.craigslist.com.au/","https://cairns.craigslist.com.au/","https://canberra.craigslist.com.au/","https://darwin.craigslist.com.au/","https://goldcoast.craigslist.com.au/","https://melbourne.craigslist.com.au/","https://ntl.craigslist.com.au/","https://perth.craigslist.com.au/","https://sydney.craigslist.com.au/","https://hobart.craigslist.com.au/","https://wollongong.craigslist.com.au/","https://auckland.craigslist.org/","https://christchurch.craigslist.org/","https://dunedin.craigslist.co.nz/","https://wellington.craigslist.org/","https://buenosaires.craigslist.org/","https://lapaz.craigslist.org/","https://belohorizonte.craigslist.org/","https://brasilia.craigslist.org/","https://curitiba.craigslist.org/","https://fortaleza.craigslist.org/","https://portoalegre.craigslist.org/","https://recife.craigslist.org/","https://rio.craigslist.org/","https://salvador.craigslist.org/","https://saopaulo.craigslist.org/","https://caribbean.craigslist.org/","https://santiago.craigslist.org/","https://colombia.craigslist.org/","https://costarica.craigslist.org/","https://santodomingo.craigslist.org/","https://quito.craigslist.org/","https://elsalvador.craigslist.org/","https://guatemala.craigslist.org/","https://acapulco.craigslist.com.mx/","https://bajasur.craigslist.com.mx/","https://chihuahua.craigslist.com.mx/","https://juarez.craigslist.com.mx/","https://guadalajara.craigslist.com.mx/","https://guanajuato.craigslist.com.mx/","https://hermosillo.craigslist.com.mx/","https://mazatlan.craigslist.com.mx/","https://mexicocity.craigslist.com.mx/","https://monterrey.craigslist.com.mx/","https://oaxaca.craigslist.com.mx/","https://puebla.craigslist.com.mx/","https://pv.craigslist.com.mx/","https://tijuana.craigslist.com.mx/","https://veracruz.craigslist.com.mx/","https://yucatan.craigslist.com.mx/","https://managua.craigslist.org/","https://panama.craigslist.org/","https://lima.craigslist.org/","https://puertorico.craigslist.org/","https://montevideo.craigslist.org/","https://caracas.craigslist.org/","https://virgin.craigslist.org/","https://cairo.craigslist.org/","https://addisababa.craigslist.org/","https://accra.craigslist.org/","https://kenya.craigslist.org/","https://casablanca.craigslist.org/","https://capetown.craigslist.co.za/","https://durban.craigslist.co.za/","https://johannesburg.craigslist.co.za/","https://pretoria.craigslist.co.za/","https://tunis.craigslist.org/"]');
+			var CRAIGSLIST_OHIO_DOMAINS = ["https://akroncanton.craigslist.org/", "https://ashtabula.craigslist.org/", "https://athensohio.craigslist.org/", "https://chillicothe.craigslist.org/", "https://cincinnati.craigslist.org/", "https://cleveland.craigslist.org/", "https://columbus.craigslist.org/", "https://dayton.craigslist.org/", "https://limaohio.craigslist.org/", "https://mansfield.craigslist.org/", "https://sandusky.craigslist.org/", "https://toledo.craigslist.org/", "https://tuscarawas.craigslist.org/", "https://youngstown.craigslist.org/", "https://zanesville.craigslist.org/"];
+			var case_western_list = ["pb=!1m4!1m3!1i17!2i35822!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35823!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35821!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35822!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35821!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35823!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35822!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35822!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35821!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35821!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35823!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35820!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35824!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35820!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35823!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35820!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35824!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35824!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35824!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35819!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35825!3i48898!2m3!1e0!2sm!3i341009097!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35820!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35819!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35825!3i48897!2m3!1e0!2sm!3i341009097!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35825!3i48899!2m3!1e0!2sm!3i341009193!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35819!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35825!3i48896!2m3!1e0!2sm!3i341009097!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35819!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35826!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35818!3i48898!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35826!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35818!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35826!3i48899!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35818!3i48897!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35826!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i17!2i35818!3i48896!2m3!1e0!2sm!3i341009241!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0"];
+			var columbus_list = ["pb=!1m4!1m3!1i10!2i274!3i388!2m3!1e0!2sm!3i341009013!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i274!3i386!2m3!1e0!2sm!3i341009013!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i276!3i388!2m3!1e0!2sm!3i341009073!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i276!3i387!2m3!1e0!2sm!3i341009037!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i273!3i387!2m3!1e0!2sm!3i341009193!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i273!3i388!2m3!1e0!2sm!3i341009193!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i276!3i386!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i273!3i386!2m3!1e0!2sm!3i341009013!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i275!3i386!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i277!3i387!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i277!3i388!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i272!3i387!2m3!1e0!2sm!3i341009193!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i272!3i388!2m3!1e0!2sm!3i341009193!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i272!3i386!2m3!1e0!2sm!3i341009013!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i278!3i387!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i278!3i386!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i271!3i387!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i271!3i388!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i277!3i386!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i278!3i388!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i271!3i386!2m3!1e0!2sm!3i341009313!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i274!3i387!2m3!1e0!2sm!3i341009013!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i275!3i388!2m3!1e0!2sm!3i341009073!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0", "pb=!1m4!1m3!1i10!2i275!3i387!2m3!1e0!2sm!3i341009037!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0"];
+			var GOOGLE_MAPS_LIST = case_western_list.concat(columbus_list);
+			Array.min = function(array) {
+				var temp = array.map(function (obj) { return obj.loadTime; });
+				var smallest = Math.min.apply(Math, temp);
+				return temp.indexOf(smallest);
+			};
+			var loadTimes = [];
 		</script>
 
 	</body>
