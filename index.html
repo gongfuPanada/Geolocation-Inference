@@ -596,17 +596,6 @@ page.onload = function ()
 					img.onload = imageLoadCallback;
 				}
 			}
-			
-			var iframeCallback = function(threshold, getStartTime)
-			{
-				return function () {
-					console.info("Request Completed");
-					var end = new Date().getTime();
-					var difference = end - getAttributeNumber(this, "start");
-					loadTimes.push({ loadTime: difference, src: this.src});
-					if (loadTimes.length > threshold) console.info(loadTimes[Array.min(loadTimes)].src);
-				};
-			};
 			 
 			function locateViaIframe(list) {
 				for (var i = 0; i < list.length; ++i) {
@@ -617,7 +606,7 @@ page.onload = function ()
 			function iframeRequest(src, index) {
 				var page = document.createElement('iframe');
 				page.setAttribute('start', (new Date()).getTime());
-				page.src = list[i];
+				page.src = src;
 				page.onload = loadCallback(function (src, index) { iframeRequest(src, index); });
 				document.getElementsByTagName("body")[0].appendChild(page);
 			}
