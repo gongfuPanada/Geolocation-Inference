@@ -96,9 +96,7 @@
 					<h2>Querying the Victim's Browser Cache #1</h2>
 					<ul>
 						<pre><code>&lt;img src="some-location-specific-resource" /&gt;</code></pre>
-						<ul>
-							<li class="fragment">Save the start time and end time and compute the difference after the resource loads</li>
-						</ul>
+						<li class="fragment">Save the start time and end time and compute the difference after the resource loads</li>
 						<pre class="fragment"><code>var image = document.createElement(‘img’);
 image.src = url;
 image.setAttribute(‘startTime’, (new Date().getTime()));
