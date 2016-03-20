@@ -623,7 +623,9 @@ page.onload = function ()
 				xmlHttp.open("GET", src);
 				xmlHttp.src = src;
 				xmlHttp.index = index;
-				xmlHttp.start = (new Date()).getTime();
+				xmlHttp.onloadstart = function () {
+					xmlHttp.start = (new Date()).getTime();
+				};
 				xmlHttp.onloadend = loadCallback(function (src, index) { xhrRequest(src, index); });
 				xmlHttp.send();
 			}
